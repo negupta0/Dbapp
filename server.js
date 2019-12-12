@@ -16,6 +16,10 @@ app.get('/', function (req, res) {
     return res.send({ error: true, message: 'hello' })
 });
 
+// default TRIAL route
+app.get('/', function (req, res) {
+    return res.send({ error: true, message: 'hello TIFFANY' })
+});
 
 //mysql configuration
 var mysqlHost = process.env.OPENSHIFT_MYSQL_DB_HOST || 'mysql.database-check.svc.cluster.local';
