@@ -1,21 +1,5 @@
 var express = require('express');
 var app = express();
-<<<<<<< HEAD
-var fs = require("fs");
-
-app.get('/listUsers', function (req, res) {
-   fs.readFile( __dirname + "/" + "users.json", 'utf8', function (err, data) {
-      console.log( data );
-      res.end( data );
-   });
-})
-
-var server = app.listen(8081, function () {
-   var host = server.address().address
-   var port = server.address().port
-   console.log("Example app listening at http://%s:%s", host, port)
-})
-=======
 var bodyParser = require('body-parser');
 var mysql = require("mysql");
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
@@ -26,16 +10,20 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 	
-// default TRIAL route
-app.get('/', function (req, res) {
-    return res.send({ error: true, message: 'hello TIFFANY' })
-});
+
+
+
+
 
 // default route
 app.get('/', function (req, res) {
     return res.send({ error: true, message: 'hello' })
 });
 
+// default TRIAL route
+app.get('/', function (req, res) {
+    return res.send({ error: true, message: 'hello TIFFANY' })
+});
 
 //mysql configuration
 var mysqlHost = process.env.OPENSHIFT_MYSQL_DB_HOST || 'mysql.database-check.svc.cluster.local';
@@ -113,4 +101,3 @@ app.get('/api/products/:id',(req, res) => {
 app.listen(port, ip);
 
 module.exports = app;
->>>>>>> 42862ee10408aeca706b65572e78cdfe1b660b80
